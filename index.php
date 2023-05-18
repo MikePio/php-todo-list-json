@@ -11,19 +11,41 @@ $test = '$test';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- BOOTSTRAP -->
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">   -->
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css' integrity='sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==' crossorigin='anonymous' />
-  <title>PHP HOTEL</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' integrity='sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==' crossorigin='anonymous' />
+  <link rel="stylesheet" href="style.css">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.js' integrity='sha512-2zwx0mkoR2cxZY0humPK79YhJYgoX5lT+WNqkgTcV7qhVm3+msjlmOgoXnN1cW2r9qqbZez3XhnLZsyW3k8Wtg==' crossorigin='anonymous'></script>
+  <title>To Do List</title>
 </head>
 
-<body class="bg-dark text-white">
-  <h1>test</h1>
-  <h2><?php echo $test ?></h2>
-  
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script> -->
+<body style="background-color: rgb(35, 75, 177); color: white; font-family: Arial, Helvetica, sans-serif;">
+
+  <div id="app">
+    <h1 class="logo">Todo list</h1>
+    <div class="container">
+      <div class="container-input">
+        <input placeholder="Scrivi qui un compito da svolgere" type="text">
+        <button class="add-item">Aggiungi alla lista</button>
+      </div>
+      <div class="error-message">Il campo di input è vuoto</div>
+        <li class="item">
+              <span class="done">Task</span>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </li>
+            <li class="item">
+              <span class="done">Task</span>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </li>
+            <li class="item">
+              <span>Task</span>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </li>
+      </ul>
+    </div>
 
 
+  </div>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
