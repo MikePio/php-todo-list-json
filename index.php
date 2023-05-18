@@ -31,7 +31,13 @@
         <button class="add-item">Aggiungi alla lista</button>
       </div>
       <div class="error-message">Il campo di input è vuoto</div>
-        <li class="item">
+      <ul class="item-list">
+        <li v-for="(task, index) in tasks" :key="index" class="item">
+          {{ task.text }}
+          <span></span>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </li>
+        <!-- <li class="item">
               <span class="done">Task</span>
               <i class="fa fa-trash" aria-hidden="true"></i>
             </li>
@@ -42,7 +48,7 @@
             <li class="item">
               <span>Task</span>
               <i class="fa fa-trash" aria-hidden="true"></i>
-            </li>
+            </li> -->
       </ul>
     </div>
 
