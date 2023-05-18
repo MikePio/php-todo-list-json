@@ -27,8 +27,8 @@
     <h1 class="logo">Todo list</h1>
     <div class="container">
       <div class="container-input">
-        <input placeholder="Scrivi qui un compito da svolgere" type="text">
-        <button class="add-item">Aggiungi alla lista</button>
+        <input autofocus v-model="inputNewTask" @keyup.enter="addNewTask" placeholder="Scrivi qui un compito da svolgere" type="text">
+        <button @click="addNewTask" class="add-item">Aggiungi alla lista</button>
       </div>
       <div class="error-message">Il campo di input è vuoto</div>
       <ul class="item-list">
