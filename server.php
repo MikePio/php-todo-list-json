@@ -37,18 +37,11 @@ if(isset($_POST['newTask'])){
 //cambio del valore done da false a true o viceversa
 if(isset($_POST['changeStatus'])){
   $index = $_POST['changeStatus'];
-  // foreach($tasks as $task => $todo_value ){
-  foreach($tasks as $task){
-    // $task.done = !$task.done;
-    // var_dump($todo_key);
-    // var_dump($todo_value);
-    // $todo_list.done = !$todo_list.done;
-    // $todo_list.$todo_value = !$todo_list.$todo_value;
-    // $todo_value[done] = !$todo_value;
-    // $todo_key[$todo_value] = !$todo_key[$todo_value];
-  };
 
-  // task.done = !task.done
+  //* le doppie quadre perché è un array
+  $todo_list[$index]['done'] = !$todo_list[$index]['done'];
+  //* se fosse stato un oggetto
+  // $todo_list[$index => 'done'] = !$todo_list[$index => 'done'];
   filePut($todo_list);
 }
 

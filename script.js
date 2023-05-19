@@ -62,7 +62,7 @@ createApp({
 
         axios.post(this.apiUrl, data)
           .then(result => {
-            // this.inputNewTask ='';
+            this.inputNewTask ='';
             this.tasks = result.data;
             console.log(result.data, 'inserito in', this.tasks);
             console.log(this.inputNewTask, 'inserito in', this.tasks);
@@ -71,18 +71,16 @@ createApp({
     },
 
     //funzione per cambiare il valore done da da false a true o viceversa
-    // statusTask(index){
-    //   console.log(index);
-    //   // this.task.done = !task.done;
-    //   const data = new FormData();
-    //   data.append('changeStatus', index);
-    //   axios.post(this.apiUrl, data)
-    //     .then(result => {
-    //       this.tasks = result.data;
-    //       // task.done = !task.done;
-    //       console.log('changeStatus test');
-    //     })
-    // },
+    statusTask(index){
+      console.log(index);
+      const data = new FormData();
+      data.append('changeStatus', index);
+      axios.post(this.apiUrl, data)
+        .then(result => {
+          this.tasks = result.data;
+          console.log('changeStatus');
+        })
+    },
 
     // funzione per eliminare un task
     deleteTask(index) {

@@ -32,7 +32,7 @@
       </div>
       <div class="error-message">{{ errorMessage }}</div>
       <ul class="item-list">
-        <li v-for="(task, index) in tasks" @click="" :key="index" class="item">
+        <li v-for="(task, index) in tasks" @click="statusTask(index)" :key="index" class="item">
           <span :class="{'done': task.done}">{{ task.text }}</span>
           <i class="fa fa-trash" @click.stop="deleteTask(index)" aria-hidden="true"></i>
         </li>
