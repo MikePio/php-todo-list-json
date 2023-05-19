@@ -6,7 +6,8 @@ createApp({
       apiUrl: 'server.php',
       // array contenente tutte le task
       tasks: [],
-      inputNewTask: ''
+      inputNewTask: '',
+      errorMessage: ''
     }
   },
 
@@ -23,39 +24,78 @@ createApp({
     },
 
     addNewTask() {
-      //* SENZA FormData(); invio task nuovo da aggiungere al server 
-      // // oggetto da inviare al server
-      // const objectNewTask = {
-      //   text: this.inputNewTask,
-      //   done: false
-      // }
+      if (this.inputNewTask.length < 1) {
+        // console.log('Il campo di input è vuoto');
+        this.errorMessage = 'Il campo di input è vuoto'
+        setTimeout(() => {
+          this.errorMessage = ''
+        }, 5000);
+      }
+      else {
 
-      // const data = {
-      //   newTask: objectNewTask
-      // }
 
-      // // chiamata post con axios
-      // axios.post(this.apiUrl, data, {
-      // // php riceve i dati solo tramite form quindi bisogna aggiungere questa proprietà
-      //   headers:{'Content-Type': 'multipart/form-data'}
-      // }).then(result => {
-      //   this.inputNewTask = '';
-      //   this.tasks = result.data;
-      //   console.log(this.inputNewTask, 'inserito in', this.tasks);
-      // })
+        //* SENZA FormData(); invio task nuovo da aggiungere al server 
+        // // oggetto da inviare al server
+        // const objectNewTask = {
+        //   text: this.inputNewTask,
+        //   done: false
+        // }
 
-      //* CON FormData(); invio task nuovo da aggiungere al server 
-      const data = new FormData();
-      // aggiungo la mia variabile all'oggetto tramite append
-      data.append('newTask', this.inputNewTask);
+        // const data = {
+        //   newTask: objectNewTask
+        // }
 
-      axios.post(this.apiUrl, data)
-        .then(result => {
-          // this.inputNewTask ='';
-          this.tasks = result.data;
-          console.log(result.data, 'inserito in', this.tasks);
-          console.log(this.inputNewTask, 'inserito in', this.tasks);
-        })
+        // // chiamata post con axios
+        // axios.post(this.apiUrl, data, {
+        // // php riceve i dati solo tramite form quindi bisogna aggiungere questa proprietà
+        //   headers:{'Content-Type': 'multipart/form-data'}
+        // }).then(result => {
+        //   this.inputNewTask = '';
+        //   this.tasks = result.data;
+        //   console.log(this.inputNewTask, 'inserito in', this.tasks);
+        // })
+
+        //* CON FormData(); invio task nuovo da aggiungere al server 
+        const data = new FormData();
+        // aggiungo la mia variabile all'oggetto tramite append
+        data.append('newTask', this.inputNewTask);
+
+        axios.post(this.apiUrl, data)
+          .then(result => {
+            // this.inputNewTask ='';
+            this.tasks = result.data;
+            console.log(result.data, 'inserito in', this.tasks);
+            console.log(this.inputNewTask, 'inserito in', this.tasks);
+          })
+      }
+    },
+
+    //funzione per cambiare il valore done da da false a true o viceversa
+    // statusTask(index){
+    //   console.log(index);
+    //   // this.task.done = !task.done;
+    //   const data = new FormData();
+    //   data.append('changeStatus', index);
+    //   axios.post(this.apiUrl, data)
+    //     .then(result => {
+    //       this.tasks = result.data;
+    //       // task.done = !task.done;
+    //       console.log('changeStatus test');
+    //     })
+    // },
+
+    // funzione per eliminare un task
+    deleteTask(index) {
+      // console.log(index);
+      if (confirm('Sei sicuro di eliminare questo task?')) {
+        const data = new FormData();
+        data.append('taskToDelete', index);
+        axios.post(this.apiUrl, data)
+          .then(result => {
+            this.tasks = result.data;
+            console.log('deleteTask');
+          })
+      }
     }
 
   },

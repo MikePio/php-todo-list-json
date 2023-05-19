@@ -11,8 +11,8 @@ $todo_list = json_decode($json_string, true);
 // var_dump($todo_list);
 
 // funzione per inserire l'oggetto nel json (non è obbligatoria)
-function filePut($tasks){
-  file_put_contents('todo-list.json', json_encode($tasks));
+function filePut($todo_list){
+  file_put_contents('todo-list.json', json_encode($todo_list));
 }
 
 // se axios invia in POST newTask quest'ultimo viene pushato nell'array
@@ -32,6 +32,31 @@ if(isset($_POST['newTask'])){
   filePut($todo_list);
   // OPPURE
   // file_put_contents('todo-list.json', json_encode($todo_list));
+}
+
+//cambio del valore done da false a true o viceversa
+if(isset($_POST['changeStatus'])){
+  $index = $_POST['changeStatus'];
+  // foreach($tasks as $task => $todo_value ){
+  foreach($tasks as $task){
+    // $task.done = !$task.done;
+    // var_dump($todo_key);
+    // var_dump($todo_value);
+    // $todo_list.done = !$todo_list.done;
+    // $todo_list.$todo_value = !$todo_list.$todo_value;
+    // $todo_value[done] = !$todo_value;
+    // $todo_key[$todo_value] = !$todo_key[$todo_value];
+  };
+
+  // task.done = !task.done
+  filePut($todo_list);
+}
+
+// eliminazione di un task
+if(isset ($_POST ['taskToDelete'])){
+  $index = $_POST ['taskToDelete'];
+  array_splice($todo_list, $index, 1);
+  filePut($todo_list);
 }
 
 //trasformo i dati per renderli compatibili al file json

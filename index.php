@@ -30,12 +30,11 @@
         <input autofocus v-model="inputNewTask" @keyup.enter="addNewTask" placeholder="Scrivi qui un compito da svolgere" type="text">
         <button @click="addNewTask" class="add-item">Aggiungi alla lista</button>
       </div>
-      <div class="error-message">Il campo di input è vuoto</div>
+      <div class="error-message">{{ errorMessage }}</div>
       <ul class="item-list">
-        <li v-for="(task, index) in tasks" :key="index" class="item">
-          {{ task.text }}
-          <span></span>
-          <i class="fa fa-trash" aria-hidden="true"></i>
+        <li v-for="(task, index) in tasks" @click="" :key="index" class="item">
+          <span :class="{'done': task.done}">{{ task.text }}</span>
+          <i class="fa fa-trash" @click.stop="deleteTask(index)" aria-hidden="true"></i>
         </li>
         <!-- <li class="item">
               <span class="done">Task</span>
