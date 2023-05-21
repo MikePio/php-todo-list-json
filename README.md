@@ -13,9 +13,8 @@ Deve essere anche gestita la persistenza dei dati leggendoli e scrivendoli in un
 - PHP
 
 ### **Bonus**
-Mostrare lo stato del task → se completato, barrare il testo
+- Mostrare lo stato del task: → permettere di segnare un task come completato facendo click sul testo. Se completato, barrare il testo
 
-Permettere di segnare un task come completato facendo click sul testo
+- Permettere il toggle del task (completato/non completato)
 
-Permettere il toggle del task (completato/non completato)
-Abilitare l’eliminazione di un task
+- Abilitare l’eliminazione di un task
